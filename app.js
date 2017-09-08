@@ -1,35 +1,41 @@
 var http = require("http");
 var express = require('express');
 var app = express();
-var mysql      = require('mysql');
+var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
-//start mysql connection
+
+
 var connection = mysql.createConnection({
-  host     : 'mitali.cgcpmi6mcuyv.us-east-2.rds.amazonaws.com', //mysql database host name
-  user     : 'mitali', //mysql database user name
-  password : '12345678', //mysql database password
-  database : 'mitali', //mysql database name
-  port     : '3306'     
+  host     : 'mitali.cgcpmi6mcuyv.us-east-2.rds.amazonaws.com',
+  user     : 'mitali',
+  password : '12345678',
+  port     : '3306',
+database : 'mitali'
 });
 
 connection.connect(function(err) {
-  if (err) throw err
-  console.log('You are now connected with mysql database...')
-})
-//end mysql connection
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
 
-//start body-parser configuration
+ else{ console.log('Connected to database.');
+connection.query("SELECT * FROM new_table", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+}
+);
+}
+});
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
-//end body-parser configuration
+var server = app.listen(3009,   function () {
 
-//create app server
-var server = app.listen(3005,   function () {
-
-  var host = server.address().address
+  var host = 'ec2-18-220-142-169.us-east-2.compute.amazonaws.com'
   var port = server.address().port
 
   console.log("Example app listening at http://%s:%s", host, port)
@@ -43,3 +49,4 @@ app.get('/customer', function (req, res) {
 	  res.end(JSON.stringify(results));
 	});
 });
+

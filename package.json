@@ -1,20 +1,18 @@
 {
-  "name": "nodejs-restapi",
+  "name": "nodetest",
   "version": "1.0.0",
-  "description": "Simple Example of nodejs to create rest call using MySQL",
+  "description": "",
   "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "latest",
+    "body-parser": "latest",
+    "ejs": "latest",
+    "express": "^4.15.4",
+    "mysql": "latest"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": {
-    "name": "Rachel",
-    "email": "restapi2example@gmail.com",
-    "url": "http://www.resapiexample.com/"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "mysql": "^2.14.1"
-  }
+  "author": "",
+  "license": "ISC"
 }
