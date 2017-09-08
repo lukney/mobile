@@ -9,7 +9,8 @@ var connection = mysql.createConnection({
   host     : 'mitali.cgcpmi6mcuyv.us-east-2.rds.amazonaws.com', //mysql database host name
   user     : 'mitali', //mysql database user name
   password : '12345678', //mysql database password
-  database : 'mitali' //mysql database name
+  database : 'mitali', //mysql database name
+  port     : '3306'     
 });
 
 connection.connect(function(err) {
