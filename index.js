@@ -38,7 +38,7 @@ var server = app.listen(3005,   function () {
 
 //rest api to get all customers
 app.get('/customer', function (req, res) {
-   connection.query('select * from karnataka', function (error, results, fields) {
+   connection.query('select * from new_table', function (error, results, fields) {
 	  if (error) throw error;
 	  res.end(JSON.stringify(results));
 	});
